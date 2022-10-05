@@ -11,6 +11,9 @@ console.log("2 * 2 =", multiply(2, 2));
 
 console.log("2 / 2 =", divide(2, 2));
 
-const getPoke = require("./poke");
+//const getPoke = require("./poke");
 
-getPoke();
+//getPoke();
+
+const cowSpeak = require("./cow");
+console.log (cowSpeak());
