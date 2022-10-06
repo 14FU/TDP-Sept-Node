@@ -12,13 +12,17 @@ app.get('/get/:id',(req,res)=>{
     res.send(names[req.params.id])
 
 });
-app.delete('/delete/id',(req,res)=>{
-    res.send(names.splice(req.params.id,2));
+app.delete('/delete/:id',(req,res)=>{
+    res.send(names.splice(req.params.id,1));
 });
+// body parser - this 
+const bodyParser = require("body-parser");
 
-app.post("/createFU",(req,res)=>{
-     FU.push(req,body);
-     res.status(201).send(FU);
+app.use(bodyParser.json());
+
+app.post("/createNames",(req,res)=>{
+     names.push(req.body.names);
+     res.status(201).send(names);
  })
 
 
