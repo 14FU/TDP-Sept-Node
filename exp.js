@@ -1,11 +1,22 @@
 const express = require("express");
-const ducks = [];
+const FU = [];
 const app = express();
-app.get("/hello",(req,res)=>{
-    res.send("hello world!")
+app.get('/',(req,res)=>{
+    res.send("Hi there im FU")
 });
-app.post("/createDuck",(req,res)=>{
-    ducks.push(req,body);
-    res.status(201).send(ducks);
-})
+let names = [Thom,Shak,Mimi,Luke,Mike];
+app.get('/getAll',(req,res)=>{
+    res.send(names)
+});
+app.get('/get/:id',(req,res)=>{
+    res.send(names[req.params.id])
+
+});
+app.get('/delete/id')
+app.post("/createFU",(req,res)=>{
+     FU.push(req,body);
+     res.status(201).send(ducks);
+ })
 const server = app.listen(1412, () => console.log(`Server sucessfully started on port ${server.address().port}`));
+
+// req= request res= respond/resukt 
