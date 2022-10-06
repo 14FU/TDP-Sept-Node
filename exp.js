@@ -49,9 +49,20 @@ app.post('/replace/:index', (req,res)=>{
 });
 
 // CREATE SOME MIDDLEWARE
+// $ will take things out the string elemet of it $ acts like *not*
+
 app.use ((req,res,next)=>{
-    
-})
+    const logEntry = `host: ${req.host}
+    ip: ${req.ip}
+    method
+    path
+    time: ${new Date()}`;
+    console.log(logEntry);
+    next();
+});
+app.get('/',(req,res) =>{
+    res.send('Hiya Kids');
+});
 
 // this should alwasy be the last line of code. this coonnect the js to the server 
 const server = app.listen(1412, () => console.log(`Server started on port ${server.address().port}`));
