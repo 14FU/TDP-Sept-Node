@@ -54,8 +54,8 @@ app.post('/replace/:index', (req,res)=>{
 app.use ((req,res,next)=>{
     const logEntry = `host: ${req.host}
     ip: ${req.ip}
-    method
-    path
+    method: ${req,method}
+    path: ${req.path}
     time: ${new Date()}`;
     console.log(logEntry);
     next();
@@ -68,4 +68,6 @@ app.get('/',(req,res) =>{
 const server = app.listen(1412, () => console.log(`Server started on port ${server.address().port}`));
 
 // req= request res= respond/resukt 
-// every time you make changes you must Ctrl + C and then type *npm start* to send the server live again
+// every time you make changes you must Ctrl + C and 
+//then type *npm start* to send the server live again
+// pick your own port number (4 digits dob is fine)
