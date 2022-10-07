@@ -28,7 +28,10 @@ app.get('/get/:id',(req,res)=>{
 app.delete('/delete/:id',(req,res)=>{
     res.send(names.splice(req.params.id,1));
 });
-// body parser - this allows you
+// splice - allows you to picks a certain parameters from the array 
+
+// body parser - this allows for the parsing of request bodies into JS ojects 
+
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
@@ -50,6 +53,7 @@ app.post('/replace/:index', (req,res)=>{
 
 // CREATE SOME MIDDLEWARE
 // $ will take things out the string elemet of it $ acts like *not*
+// middleware will hvae 3 parameters req res and next 
 
 app.use ((req,res,next)=>{
     const logEntry = `host: ${req.host}
@@ -64,10 +68,35 @@ app.get('/',(req,res) =>{
     res.send('Hiya Kids');
 });
 
+// create an endpoitnthat throws and error message.
+app.get('/getError',(req, res,next){
+    next (Error('Message'));
+});
+
+
+// Error- handling middleware that logs the error's stacktrace to the console then passes it on 
+app.use((err,req,res,next)=>{
+    console.log(err,stack);
+    next(err);
+});
+//error handling must ALWAYS have four parameters 
+//use is like a default 
+
+
+// sends a response informing the user that somehting has gone wrong 
+app.use((error,req,res,next)=>{
+    res.status(500).send(err.message);
+});
+// when something goe wrong it will RESPOND by sending an error message 
+
 // this should alwasy be the last line of code. this coonnect the js to the server 
 const server = app.listen(1412, () => console.log(`Server started on port ${server.address().port}`));
+// this is the the ocd eot connect to server 
 
-// req= request res= respond/resukt 
-// every time you make changes you must Ctrl + C and 
-//then type *npm start* to send the server live again
-// pick your own port number (4 digits dob is fine)
+//NOTES 
+// + req= request res= respond
+// + every time you make changes you must Ctrl + C and 
+// + then type *npm start* to send the server live again
+// + pick your own port number (4 digits dob is fine)
+// + With MIDDLEWARE you must always put next () or res.send() or
+// no response will be sent . 
