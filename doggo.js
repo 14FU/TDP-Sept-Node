@@ -1,0 +1,30 @@
+var list = [
+    {place: '1st'},
+    {place: '2nd'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+    {place: '1st'},
+];
+
+list = new Array();
+var 
