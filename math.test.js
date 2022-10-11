@@ -1,5 +1,6 @@
-const {factorial} = require("../maths");
+const {factorial} = require("./maths");
 const{expect}= require("chai");
+const sum = require("./maths")
 
 function factorial (n){
     let answer = 1;
@@ -12,7 +13,6 @@ function factorial (n){
         return answer;
     }
 }
-
 let nm = 4; 
 answer = factorial (nm)
 console.log("factorial of "+ nm + "is" + answer);
