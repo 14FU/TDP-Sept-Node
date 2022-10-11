@@ -126,3 +126,15 @@ app.use((error,req,res,next)=>{
     res.status(500).send(err.message);
 });
 // when something goe wrong it will RESPOND by sending an 
+
+/// FACTORIAL TASK 
+
+descibe("maths tests", () => {
+    it ("should = 2", () => {
+        expect (sum(1,1)).to.equal (2);
+    
+    })
+    it ("should fail", () =>{
+        expect(sum(1,1)).to.equal(3);
+    })
+});

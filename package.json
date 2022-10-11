@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "greet": "echo 'hello there!'",
-    "start": "node exp.js"
+    "start": "node maths.js"
   },
   "keywords": [],
   "author": "",
