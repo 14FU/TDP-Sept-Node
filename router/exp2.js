@@ -1,28 +1,51 @@
 // the idea of router allows you to sperate code 
 //making it more effiencent and easier to read and find 
 const router = require("express").Router();
-let names = [ 'thom','mimi', 'luke','mike', 'shak'];
-router.get('/', (req,res) => res.send('hiya guys my name is FU'));
-router.get ('/getAll', (req,res) => res.send(names));
-router.get('/get/:id',(req,res) => res.send(names[req.params.id]));
 
-router.delete('/delete/:id',(req,res)=>{
-    res.send(names.splice(req.params.id,1));
+// caling the schema model after we have xported 
+const {gooseModel} = require ("../db")
+//.. means to come out of the folder to look for that file (go back a folder)
+// going into a folder would be ./
+
+//apply {} so it will find all the values inside the model this will be get all 
+router.get('/goosey', (req,res) => gooseModel.find({}).then (results => res.send(results)).catch(err=> next(err)));
+
+// post , status code for creatign is 201
+router.post('/addGoose', (req,res,next) => {
+    gooseModel.create(req.body).then(result => res.status(201).send(result)).catch(err => next(err));
 });
 
-router.post("/createNames", (req, res) => {
-    names.push(req.body.names);
-    res.status(201).send(names);
-    });
-
-    //creatign a request handler that replaces a name IN THE ARRAY with a name SPECIFIED IN the query. 
-router.put('/replace/:index', (req, res) => {
-    const name = req.query.name;
+// to admend stuff 
+router.put('/replace/:index', (req,res)=>{
+    const goosey = req.query.goosey;
     const index = req.params.index;
     const old = names[index];
     names[index] = name;
     res.status(202).send(`${old}sucessfully relaced with ${name}`);
-    });
+});
+
+// let names = [ 'thom','mimi', 'luke','mike', 'shak'];
+// router.get('/', (req,res) => res.send('hiya guys my name is FU'));
+// router.get ('/getAll', (req,res) => res.send(names));
+// router.get('/get/:id',(req,res) => res.send(names[req.params.id]));
+
+// router.delete('/delete/:id',(req,res)=>{
+//     res.send(names.splice(req.params.id,1));
+// });
+
+// router.post("/createNames", (req, res) => {
+//     names.push(req.body.names);
+//     res.status(201).send(names);
+//     });
+
+//     //creatign a request handler that replaces a name IN THE ARRAY with a name SPECIFIED IN the query. 
+// router.put('/replace/:index', (req, res) => {
+//     const name = req.query.name;
+//     const index = req.params.index;
+//     const old = names[index];
+//     names[index] = name;
+//     res.status(202).send(`${old}sucessfully relaced with ${name}`);
+//     });
 
 module.exports= router;
 
@@ -69,7 +92,7 @@ module.exports= router;
 //  })
  
 //  //creatign a request handler that replaces a name IN THE ARRAY with a name SPECIFIED IN the query. 
-// app.post('/replace/:index', (req,res)=>{
+// app.put('/replace/:index', (req,res)=>{
 //     const name = req.query.name;
 //     const index = req.params.index;
 //     const old = names[index];
